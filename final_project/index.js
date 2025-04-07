@@ -15,7 +15,7 @@ app.use("/customer/auth/*", function auth(req,res,next){
 if(req.session && req.session.authentication){
     const token = req.session.authentication.accessToken;
 
-    jwt.verify(token,"secretkey",(err,user)=>{
+    jwt.verify(token,"fingerprint_customer",(err,user)=>{
         if(err){
             return res.status(404).json({message : "User not authenticated"});
         }
